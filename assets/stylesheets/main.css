@@ -1,0 +1,1161 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+/*------------------------------------------------------------------------------*/
+/*
+From there, we can use the universal selector, *, along with universal 
+pseudo-elements, *:before and *:after, to select every imaginable element
+ and change the box-sizing to border-box. Remember, we’re going to want
+  to include the necessary vendor prefixes for the box-sizing property, 
+  as it is a relatively new property.
+*/
+/*
+  ========================================
+  Grid
+  ========================================
+*/
+
+*,
+*:before,
+*:after {
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+}
+/*
+1)create a class that will serve as a container for our elements. 
+We can use this container class on different elements to set a 
+common width, center the elements on the page, and apply some common
+ horizontal padding.
+
+2)Just below our universal selector rule set, let’s create a selector 
+with a class of container. Within this selector let’s set our width
+ to 960 pixels, our left and right padding to 30 pixels, our top and
+  bottom margins to 0, and our left and right margins to auto.
+
+Setting a width tells the browser definitively how wide any element with 
+the class of container should be. Using a left and right margin of auto 
+in conjunction with this width lets the browser automatically figure out 
+equal left and right margins for the element, thus centering it on the page. 
+Lastly, the left and right padding ensures that our content isn’t sitting directly on the 
+edge of the element and provides a little breathing room for the content.
+*/
+.container {
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
+  width: 960px;
+}
+
+/*
+(3) Now that we have a container class available to use, let’s go ahead and apply the class of 
+container throughout our HTML to the <header> and <footer> elements on each page, including 
+the index.html, speakers.html, schedule.html, venue.html, and register.html files.
+
+<header class="container">...</header>
+
+<footer class="container">...</footer>
+
+(4) While we’re at it, let’s go ahead and center the rest of the content on our pages.
+ On the home page, our index.html file, let’s add the class of container to each <section> 
+ element on the page, one for our hero section (the section that introduces our conference) 
+ and one for our teasers section.
+
+ <section class="container">...</section>
+
+ Additionally, let’s wrap all of the <h1> elements on each page with a <section> element 
+ with the class of container.
+
+ <section class="container">
+  <h1>...</h1>
+</section>
+
+We’ll come back and adjust these elements and classes later, but for now we’re headed in 
+the right direction.
+
+(5)Now that all of our content is centered, let’s create some vertical spacing between elements. 
+For starters let’s place a 22-pixel bottom margin on a few of our heading and paragraph 
+elements. We’ll place and comment on these typography styles below our grid styles.
+
+*/
+
+/*
+  ========================================
+  Typography
+  ========================================
+*/
+
+h1, h3, h4, h5, p {
+  margin-bottom: 22px;
+}
+/*
+We intentionally skipped <h2> and <h6> elements, as the design does not call for margins 
+on <h2> elements and as we won’t be using any <h6> elements at this time.
+
+(6) Let’s also try our hand at creating a border and some rounded corners. 
+We’ll start by placing a button within the top <section> element on our home page, 
+just below the header.
+
+Previously we added an <a> element within this <section> element. Let’s add the classes 
+of btn and btn-alt to this anchor.
+
+<a class="btn btn-alt">...</a>
+
+Now let’s create some styles for those classes within our CSS. Below our typography rule set, 
+let’s create a new section of the CSS file for buttons.
+
+To begin let’s add the btn class and apply some common styles that can be shared across
+ all buttons. We’ll want all of our buttons to have a 5-pixel border-radius. They should be 
+ displayed as inline-block elements so we can add padding around all four sides without issue;
+  we’ll remove any margin.
+*/
+
+/*
+  ========================================
+  Buttons
+  ========================================
+*/
+
+.btn {
+  border-radius: 5px;
+  display: inline-block;
+  margin: 0;
+}
+
+/*
+We’ll also want to include styles specific to this button, which we’ll do by
+using the btn-alt class. Here we’ll add a 1-pixel, solid, gray border 
+with 10 pixels of padding on the top and bottom of the button 
+and 30 pixels of padding on the left and right of the button.
+
+Using both the btn and btn-alt classes on the same <a> element allows these 
+styles to be layered on, rendering all of the styles on a single element.
+*/
+.btn-alt {
+  border: 1px solid #dfe2e5;
+  padding: 10px 30px;
+}
+/**
+Because we’re working on the home page, let’s also add a bit of padding to 
+the <section> element that contains our <a> element with the classes of btn 
+and btn-alt. We’ll do so by adding a class attribute value of hero to 
+the <section> element, alongside the container class attribute value, 
+as this will be the leading section of our website. 
+<section class="hero container">
+
+Next we’ll want to create a new section within our CSS file for home page styles, 
+nd, once we’re ready, we’ll use the class of hero to apply padding around 
+all four sides of the <section> element.
+/
+/*
+  ========================================
+  Home
+  ========================================
+*/
+
+.hero {
+  padding: 22px 80px 66px 80px;
+}
+
+/*
+  ========================================
+  Clearfix
+  ========================================
+*/
+.group:before,
+.group:after {
+  content: "";
+  display: table;
+}
+.group:after {
+  clear: both;
+}
+.group {
+  clear: both;
+  *zoom: 1;
+}
+/**
+Now that we can contain floats, let’s float the primary <h1> within the <header> element 
+to the left and allow all of the other content in the header to wrap to the right of it.
+
+To do this, let’s add a class of logo to the <h1> element. Then within our CSS, let’s add 
+a new section of styles for the primary header. In this section we’ll select the <h1> 
+element with the logo class and then float it to the left.
+
+<h1 class="logo">
+  <a href="index.html">Styles Conference</a>
+</h1>
+
+/
+/*
+  ========================================
+  Primary header
+  ========================================
+*/
+
+.logo {
+  float: left;
+}
+/*
+While we’re at it, let’s add a little more detail to our logo. 
+We’ll begin by placing a <br> element, or line break, between the word “Styles” and 
+the word “Conference” to force the text of our logo to sit on two lines.
+
+Within the CSS, let’s add a border to the top of our logo and some vertical padding 
+to give the logo breathing room.
+
+<h1 class="logo">
+  <a href="index.html">Styles <br> Conference</a>
+</h1>
+
+*/
+.logo {
+  border-top: 4px solid #648880;
+  padding: 40px 0 22px 0;
+  float: left;
+}
+/*
+Because we floated the <h1> element, we’ll want to contain that float. 
+The closest parent element of the <h1> element is the <header> element, 
+so we’ll want to add the class of group to the <header> element. 
+Doing this applies the clearfix styles we set up earlier to the <header> element.
+
+<header class="container group">
+  ...
+</header>
+
+*/
+/*
+The <header> element is taking shape, so let’s take a look at the <footer> element. 
+Much like we did with the <header> element, we’ll float our copyright to the left within 
+the <small> element and let all other elements wrap around it to the right.
+
+Unlike the <header> element, though, we’re not going to use a class directly on the floated
+ element. This time we’re going to apply a class to the parent of the floated element 
+ and use a unique CSS selector to select the element and then float it.
+
+Let’s start by adding the class of primary-footer to the <footer> element. 
+Because we know we’ll be floating an element within the <footer> element, 
+we should also add the class of group while we’re at it.
+
+<footer class="primary-footer container group">
+  ...
+</footer>
+
+*/
+/*
+Now that the class of primary-footer is on the <footer> element, we can use that class 
+to prequalify the <small> element with CSS. We’ll want to select and float the <small> 
+element to the left. Let’s not forget to create a new section within our main.css file 
+for these primary footer styles.
+*/
+/*
+  ========================================
+  Primary footer
+  ========================================
+*/
+
+.primary-footer small {
+  float: left;
+}
+/*
+To review, here we are selecting the <small> element, which must reside within an element 
+with the class attribute value of primary-footer, such as our <footer> element, for example.
+
+Lastly, let’s put some padding on the top and bottom of the <footer> element to help 
+separate it a little more from the rest of the page. We can do this directly by using 
+the primary-footer class with a class selector.
+*/
+
+.primary-footer {
+  padding-bottom: 44px;
+  padding-top: 44px;
+}
+/*
+With all of these changes to the <header> and <footer> elements, 
+we have to be sure to make them on every page, not just the index.html page.
+*/
+/*---------------------------------------------------------------------------------------*/
+                   /*   positionning
+
+/*
+For the Styles Conference website, we’ll create a three-column reusable layout using
+ inline-block elements. We’ll do so in a way that allows us to have three columns of equal width
+  or two columns with the total width split between them, two-thirds in one and 
+  one-third in the other.
+
+To begin, we’ll create classes that define the width of these columns. 
+The two classes we’ll create are col-1-3, for one-third, and col-2-3, for two-thirds. 
+Within the grid section of our main.css file, let’s go ahead and define these classes and 
+their corresponding widths.
+*/
+.col-1-3 {
+  width: 33.33%;
+}
+.col-2-3 {
+  width: 66.66%;
+}
+/*
+We’ll want both of the columns to be displayed as inline-block elements.
+We’ll need to make sure that their vertical alignment is set to the top of each column, too.
+
+Let’s create two new selectors that will share the display and vertical-alignment property 
+styles.
+*/
+.col-1-3,
+.col-2-3 {
+  display: inline-block;
+  vertical-align: top;
+}
+/*
+Looking at the CSS again, we’ve created two class selectors, col-1-3 and col-2-3, 
+that are separated with a comma. The comma at the end of the first selector signifies 
+that another selector is to follow. The second selector is followed by the opening 
+curly bracket, {, which signifies that style declarations are to follow. 
+By comma-separating the selectors, we can bind the same styles to multiple 
+selectors at one time.
+*/
+/*
+We’ll want to put some space in between each of the columns to help break up the content. 
+We can accomplish this by putting horizontal padding on each of the columns.
+
+This works well; however, when two columns are sitting next to one another, 
+the width of the space between them will be double that of the space from 
+the outside columns to the edge of the row. To balance this we’ll place all 
+of our columns within a grid and add the same padding from our columns to that grid.
+
+Let’s use a class name of grid to identify our grid, and then let’s identify the same 
+horizontal padding for our grid, col-1-3, and col-2-3 classes. With commas separating 
+our selectors again, our CSS looks like this:
+*/
+.grid,
+.col-1-3,
+.col-2-3 {
+  padding-left: 15px;
+  padding-right: 15px;
+}
+/*
+When we’re setting up the horizontal padding, we’ll need to be careful. Remember, in the last
+lesson we created a container element, known by the class of container, to center all of our
+content on a page within a 960-pixel-wide element. Currently if we were to put an element 
+with the class of grid inside an element with the class of container, their horizontal
+paddings would add to one another, and our columns would not appear proportionate to the 
+width of the rest of the page.
+
+We don’t want this to happen, so instead, we’ll have to share some of the styles from the 
+container rule set with the grid rule set. Specifically, we’ll need to share the width 
+property and values (to make sure our page stays fixed at 960 pixels wide) and the margin 
+property and values (to center any element with the class of grid on the page).
+
+We’ll accomplish this by breaking up the old container rule set into the following:
+*/
+.container,
+.grid {
+  margin: 0 auto;
+  width: 960px;
+}
+.container {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+/*
+Now any element with the class of container or grid will be 960 pixels wide and centered on 
+the page. Additionally, we’ve preserved the existing horizontal padding for any element with 
+the class of container by moving it into a new, separate rule set.
+*/
+/*
+5) All right—all of the heavy lifting needed to get our reusable grid styles into place is 
+finished. Now it’s time to work in our HTML and to see how these classes perform.
+
+We’ll begin with the teasers on the home page, within our index.html file, aligning them 
+into three columns. Currently, the teasers are wrapped in a <section> element with the class 
+of container. We’ll want to change that class from container to grid so that we can begin p
+lacing columns within it.
+
+<section class="grid">
+  ...
+</section>
+
+*/
+/*
+6)Next, we’ll want to add a class of col-1-3 to each of the <section> elements within 
+the <section> element with the class of grid.
+*/
+/*
+7)And lastly, because each of our columns is an inline-block element, we’ll want to make 
+sure we remove the empty white space between them. We’ll use comments to do this, and we’ll 
+add a little bit of documentation noting each upcoming section while we’re at it to 
+better organize our code.
+*/
+/*
+To review, on line 3 we leave a comment identifying the “Speakers” section to follow. 
+At the end of line 7, we open a comment immediately after the closing </section> tag. 
+Within that comment, on line 9 we identify the “Schedule” section to come. We then close 
+the comment at the beginning of line 11, just before the opening <section> tag. 
+This same comment structure reappears on lines 13 through 17 between the two <section> 
+elements, right before the “Venue” section. In all, we’ve commented out any potential 
+white space between the columns while also using those comments to identify our sections.
+
+We now have a reusable three-column grid that supports multiple arrangements, 
+sing both one-third- and two-thirds-width columns. Our home page now has three columns, 
+breaking up all the different teasers.
+*/
+
+/*----------------------WORKING WITH TYPOGRAPHY---------------------------------------------*/
+
+/*
+(1) let’s start adding some font-based properties.
+
+We’ll begin by updating the font on all of our text. To do this, we’ll apply styles to 
+our <body> element. We’ll start with a color, and we’ll also add in font-weight, font-size, 
+line-height, and font-family values by way of the font property and shorthand values.
+
+In an attempt to keep our main.css file as organized as possible, let’s create a new section 
+for these custom styles, placing it just below our reset and above our grid styles.
+
+We need to add the following:
+
+/*
+  ========================================
+  Custom styles
+  ========================================
+*/
+body {
+  color: #888;
+  font: 300 16px/22px "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+
+/*
+(2) In Lesson 4, “Opening the Box Model,” we began adding some typographic styles, specifically
+ adding a bottom margin to a few different levels of headings and paragraphs. Within the same 
+ section of the main.css file, let’s add a color to the level-one through level-four headings.*/
+
+ h1, h2, h3, h4 {
+  color: #648880;
+}
+/*
+(3) While we’re at it, let’s also add in font sizes for these different heading levels. 
+Our <h1> and <h2> elements will use fairly large font-size values; consequently, we’ll also 
+want to increase their line-height values to keep the text within these elements legible. 
+For reference, we’ll make their line-height values 44 pixels, double the value of 
+the base line-height set within the <body> element rule set.*/
+
+h1 {
+  font-size: 36px;
+  line-height: 44px;
+}
+h2 {
+  font-size: 24px;
+  line-height: 44px;
+}
+h3 {
+  font-size: 21px;
+}
+h4 {
+  font-size: 18px;
+}
+
+/*(3) Our <h5> elements are going to be a little more unique than the rest of our headings. 
+Accordingly, we’re going to change their styles a bit.
+
+We’ll use a different color property value and a slightly smaller font-size for these elements,
+and we’re going to change the font-weight to 400, or normal.
+
+By default, browsers render headings with a font-weight of bold. Our headings, however, 
+are currently all set to a font-weight of 300. Our reset at the top of our main.css file 
+changed the font-weight to normal, and then our font-weight of 300 within the <body> element 
+rule set changed all headings to a font-weight of 300.
+
+The font-weight of 400 on the <h5> element will actually make it slightly thicker than the 
+rest of our other headings and text.*/
+
+h5 {
+  color: #a9b2b9;
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/*(4) Our reset at the beginning of our style sheet also reset the browser default styles for 
+the <strong>, <cite>, and <em> elements, which we’ll want to add back in. For our <strong> 
+elements we’ll want to set a font-weight of 400, which actually equates to normal, not bold, 
+as the typeface we’re using is thicker than most typefaces. Then, for our <cite> and <em>
+elements we’ll want to set a font-style of italic.*/
+
+strong {
+  font-weight: 400;
+}
+cite, em {
+  font-style: italic;
+}
+
+
+/*(5) We’re on a roll, so let’s keep going by adding some styles to our anchor elements.
+ Currently they are the browser default blue. Let’s make them the same color as our <h1> 
+ through <h4> heading elements. Additionally, let’s use the :hover pseudo-class to change 
+ the color to a light gray when a user hovers over an anchor.*/
+
+/*
+  ========================================
+  Links
+  ========================================
+*/
+
+a:hover {
+  color: #a9b2b9;
+}
+a {
+  color: #648880;
+}
+
+/*(6) Now let’s take a look at our <header> element and update our styles there. 
+We’ll begin updating our logo by adding the font-size and line-height properties within 
+the logo rule set. Adding to the existing border-top, float, and padding properties, 
+the new rule set should look like this: */
+
+.logo {
+  border-top: 4px solid #648880;
+  float: left;
+  font-size: 48px;
+  line-height: 44px;
+  padding: 40px 0 22px 0;
+}
+
+/*(7) Because we’ve bumped up the size of the logo quite a bit, let’s add a margin to the <h3> 
+element within the <header> element to balance it. We’ll do so by placing a class attribute 
+value of tagline on the <h3> element and then using that class within our CSS to apply the 
+proper margins.
+
+Let’s not forget that the changes to the <h3> element need to happen on every page.
+
+<h3 class="tagline">August 24&ndash;26th &mdash; Chicago, IL</h3> */
+
+.tagline {
+  margin: 66px 0 22px 0;
+}
+
+/*(8) After the <h3> element with the class attribute value of tagline comes the <nav> element. 
+Let’s add a class attribute value of primary-nav to the <nav> element and add font-size and 
+font-weight properties to make the navigation stand out against the rest of the header.
+
+<nav class="primary-nav">
+  ...
+</nav> */
+
+.primary-nav {
+  font-size: 14px;
+  font-weight: 400;
+}
+
+/*(9) With the <header> element in slightly better shape, let’s also take a look at our <footer>
+element. Using the primary-footer class, let’s change the color and font-size for all the 
+text within the <footer> element. Additionally, let’s bump up the font-weight of the <small> 
+element to 400.
+
+Including the existing styles, the styles for our primary footer section should look 
+like this: */
+
+.primary-footer {
+  color: #648880;
+  font-size: 14px;
+  padding-bottom: 44px;
+  padding-top: 44px;
+}
+.primary-footer small {
+  float: left;
+  font-weight: 400;
+}
+
+/*(10) Let’s update our home page a bit, too. We’ll start with the hero section, increasing
+the overall line-height of the section to 44 pixels. We’ll also make the text within this 
+section larger, increasing the <h2> element’s font-size to 36 pixels and the <p> element’s
+font-size to 24 pixels.
+
+We can make all of these changes by using the existing hero class selector and creating new 
+selectors for the <h2> and <p> elements. Our styles for the hero section will now break down 
+in this way: */
+
+.hero {
+  line-height: 44px;
+  padding: 22px 80px 66px 80px;
+}
+.hero h2 {
+  font-size: 36px;
+}
+.hero p {
+  font-size: 24px;
+}
+
+/*(11) Lastly, we have one small issue to fix on our home page. Previously we gave all of our 
+anchor elements a light gray color value when a user hovers over them. This works great, 
+except for within the three teasers on our home page where the anchor element wraps both <h3> 
+and <h5> elements. Because the <h3> and <h5> elements have their own color definition, they
+are not affected by the :hover pseudo-class styles from before.
+
+Fortunately we can fix this, although it’s going to require a fairly complicated selector. 
+We’ll begin by adding a class attribute value of teaser to all three columns on the home page. 
+We’ll use this class as a qualifying selector shortly.
+
+<section class="grid">
+
+  <!-- Speakers -->
+  
+  <section class="teaser col-1-3">
+    <a href="speakers.html">
+      <h5>Speakers</h5>
+      <h3>World-Class Speakers</h3>
+    </a>
+    <p>Joining us from all around the world are over twenty fantastic speakers, here to 
+    share their stories.</p>
+  </section>
+
+  ...
+
+</section> 
+
+
+With a qualifying class in place, we’re ready to do some CSS heavy lifting and create a 
+fairly complex selector. We’ll begin our selector with the teaser class, as we only want to 
+target elements within an element with the class of teaser. From there we want to apply styles 
+to elements that reside within anchor elements that are being hovered over; thus we’ll add the 
+a type selector along with the :hover pseudo-class. Lastly, we’ll add the h3 type selector to
+select the actual <h3> elements we wish to apply styles to.
+
+Altogether, our selector and styles for these <h3> elements will look like this: */
+
+.teaser a:hover h3 {
+  color: #a9b2b9;
+}
+
+
+/*-----------------Applying Text Properties-----------------------------*/
+
+/* (1)
+Currently every link on the page is underlined, which is the default style for anchor elements. 
+This style is a little overbearing at times, though, so we’re going to change it up a bit.
+
+Adding to our links section within our main.css file, we’ll begin by removing the underline 
+from all anchor elements by way of the text-decoration property. Next, we’ll select all anchor 
+elements that appear within a paragraph element and give them a bottom border.
+
+We could use the text-decoration property instead of the border-bottom property to underline 
+all the links within each paragraph; however, by using the border-bottom property we have 
+more control over the underline’s appearance. Here, for example, the underline will be a 
+different color than the text itself.
+
+Our links section, which includes our previous hover styles, should look like this:
+*/
+
+a {
+  color: #648880;
+  text-decoration: none;
+}
+a:hover {
+  color: #a9b2b9;
+}
+p a {
+  border-bottom: 1px solid #dfe2e5;
+}
+/*
+(2) Going back to our <h5> elements from before, which have slightly different styles than
+ the rest of the headings, let’s make them all uppercase using the text-transform property. 
+ Our new <h5> element styles should look like this:
+*/
+h5 {
+  color: #a9b2b9;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+}
+/*(3)
+Let’s revisit our <header> element to apply additional styles to our navigation 
+menu (to which we previously added the primary-nav class attribute value). After the existing 
+font-size and font-weight properties, let’s add some slight letter-spacing and change our 
+text to all uppercase via the text-transform property.
+
+Our styles for the <nav> element with the primary-nav class attribute value should now look 
+like this:
+*/
+.primary-nav {
+  font-size: 14px;
+  font-weight: 400;
+  letter-spacing: .5px;
+  text-transform: uppercase;
+}
+/*
+(4) Previously, we floated our logo to the left within the <header> element. Now our tagline 
+sits directly to the right of the logo; however, we’d like it to appear all the way to the 
+right of the <header> element, flush right.
+
+We need to add the text-align property with a value of right to the <h3> element with the 
+class attribute value of tagline to get the tagline to sit all the way to the right.
+
+When added to the existing margin property, our new styles for the <h3> element with the 
+class attribute value of tagline will look like this:
+*/
+.tagline {
+  margin: 66px 0 22px 0;
+  text-align: right;
+}
+/*
+(5) We’d also like our navigation menus, both in the <header> and <footer> elements, to sit 
+flush right. Because both the <header> and <footer> elements have child elements that are 
+floated to the left, we can use the same approach as we did with our tagline.
+
+The floated elements within the <header> and <footer> elements are taken out of the normal 
+flow of the page, and this causes other elements to wrap around them. In this specific case, 
+our navigation menus are the elements wrapping around the floated elements.
+
+Because we’ll be sharing the same styles across both navigation menus, we’ll give them each 
+the class of nav. Our <header> element will now look like this:
+
+<header class="container group">
+
+  <h1 class="logo">...</h1>
+
+  <h3 class="tagline">...</h3>
+
+  <nav class="nav primary-nav">
+    ...
+  </nav>
+
+</header>
+
+And our <footer> element will now look like this:
+
+<footer class="primary-footer container group">
+
+  <small>...</small>
+
+  <nav class="nav">
+    ...
+  </nav>
+
+</footer>
+
+Let’s not forget, changes to our <header> and <footer> elements need to be made on every page.
+
+(6)With the nav class in place on both navigation menus, let’s create a new section within
+ our main.css file to add shared navigation styles. We’ll begin by adding the text-align 
+ property with a value of right to a nav class rule set. We’ll expand these styles later on, 
+ but this will serve as a great foundation.
+*/
+/*
+  ========================================
+  Navigation
+  ========================================
+*/
+
+.nav {
+  text-align: right;
+}
+/*
+(7)While we’re adding the text-align property to a few different elements, let’s also add 
+the text-align property with a value of center to our hero class selector rule set. For 
+reference, these styles, including our existing line-height and padding properties, are 
+located within the home page section of our main.css file.
+*/
+.hero {
+  line-height: 44px;
+  padding: 22px 80px 66px 80px;
+  text-align: center;
+}
+
+
+/*-------------------------------Using Web-Safe Fonts----------------
+
+(1) Let’s head over to the Google Fonts website and search for the font we’d like to use: Lato. Once we’ve found it, let’s proceed with adding it to our collection and following the steps on their website to use the font.
+
+When the time comes to choose which font weights we’d like to use, let’s make sure to 
+select 300 and 400, as we’ve already been using those within our CSS. Let’s also add 100 to 
+the collection for another variation, too.
+
+Google will give us an additional <link> element to include in the <head> element of all of 
+our pages. We’ll place this new <link> element directly below our existing <link> element. 
+The new element will include the proper style sheet reference to Google, which will take care 
+f including a new CSS file with the proper @font-face at-rule necessary for us to use the Lato 
+font.
+
+With the addition of the new <link> element, our <head> element will look like this:
+
+<head>
+  <meta charset="utf-8">
+  <title>Styles Conference</title>
+  <link rel="stylesheet" href="assets/stylesheets/main.css">
+  <link rel="stylesheet"
+  href="http://fonts.googleapis.com/css?family=Lato:100,300,400">
+</head>
+
+(2) Once we have added the new <link> element to all of our pages, we are ready to begin 
+using the Lato font. We’ll do so by adding it to our primary font stack within the font 
+property inside our <body> element styles.
+
+Let’s add Lato to the beginning of our font stack to make it "Lato", "Open Sans", 
+"Helvetica Neue", Helvetica, Arial, sans-serif.
+
+Although Lato is a single word, because it is an embedded web font we’ll want to surround it 
+with quotation marks within any CSS reference. Our new <body> element styles will look like 
+this:
+ */
+body {
+  color: #888;
+  font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/*
+(3) Lato should now be up and running, visible in all of our text across the Styles Conference 
+website. Let’s take a closer look at our logo and update it a bit.
+
+Within our logo class selector rule set, we’ll begin by adding the font-weight property 
+with a value of 100 to make the text fairly thin. We’ll also use the text-transform property 
+with a value of uppercase to make all of the letters uppercase, as well as the letter-spacing
+property with a value of .5 pixels to add a tiny bit of space between each letter within the
+logo.
+
+Altogether the styles for our logo will look like this:
+*/
+.logo {
+  border-top: 4px solid #648880;
+  float: left;
+  font-size: 48px;
+  font-weight: 100;
+  letter-spacing: .5px;
+  line-height: 44px;
+  padding: 40px 0 22px 0;
+  text-transform: uppercase;
+}
+/*
+(4) Because we have a font-weight property value of 100 available, let’s also set the 
+paragraph element within our hero section to that weight. We can use the existing selector 
+to do so, and the new rule set will look like this:
+*/
+.hero p {
+  font-size: 24px;
+  font-weight: 100;
+}
+
+/*-------------------------------Setting Backgrounds & Gradients------------------*/
+/*
+(1) Returning to our Styles Conference website, let’s add some background colors. While we do 
+that, we’ll change a few other styles to keep all of our styles working together and to keep 
+all of our content legible.
+
+We’ll begin by taking a big step and applying a blue background to the <body> element alongside 
+the existing color and font properties. All of the styles for the <body> element rule set 
+now include the following:
+*/
+body {
+  background: #293f50;
+  color: #888;
+  font: 300 16px/22px "Lato", "Open Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+/*
+We’ve placed a blue background on the <body> element purposely, as our website will have a 
+few different rows of background colors, and the most frequent background color will be blue.
+
+(2) Now that every page on our Styles Conference website includes a blue background, let’s 
+clean up a few areas that will keep that blue background. Specifically, our <header> and 
+<footer> elements will remain blue, as will the hero section on the home page.
+
+Within our <header> and <footer> elements let’s make all of our link colors start as white 
+and then, when hovered over, turn the same green as our headings.
+
+We’ll begin with our <header> element. In order to select all <a> elements within the 
+<header> element, we’ll add a class of primary-header to the <header> element 
+(in addition to the existing container and group classes). Don’t forget, we’ll need to 
+add this class to the <header> elements across all of our pages.
+
+<header class="primary-header container group">
+  ...
+</header>
+
+With the primary-header class in place on the <header> element, and the existing primary-footer 
+class in place on the <footer> element, we can add two new rule sets to the bottom of the 
+links section within our main.css file.
+
+The first rule set will select all <a> elements within an element with the class attribute 
+value of primary-header or primary-footer and set their color to white, as defined by comma 
+separating two individual selectors that share the same property and value. The second rule 
+set will select the same <a> elements as before but will change their color to green when a 
+user hovers over them.
+*/
+.primary-header a,
+.primary-footer a {
+  color: #fff;
+}
+.primary-header a:hover,
+.primary-footer a:hover {
+  color: #648880;
+}
+/*
+(3) While we’re making some of our text white, let’s make the text within the hero section 
+of our home page white also, as it will remain on a blue background. We have the existing 
+hero class rule set available to add styles to, so let’s add our white text color there. 
+In all, our hero class rule set should include the following:
+*/
+.hero {
+  color: #fff;
+  line-height: 44px;
+  padding: 22px 80px 66px 80px;
+  text-align: center;
+}
+/*
+(4) Also within the hero section of our home page, let’s clean up some of the button styles. 
+We’ll begin by adding some new properties to our btn class rule set, within the buttons 
+section of our main.css file.
+
+Specifically, let’s set the button text color to white, make sure our cursor is always a 
+pointer, increase the font-weight, add a small amount of letter-spacing, and change our 
+text-transform to uppercase.
+
+In all, our new btn class rule set should look like this:
+*/
+.btn {
+  border-radius: 5px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-weight: 400;
+  letter-spacing: .5px;
+  margin: 0;
+  text-transform: uppercase;
+}
+/*
+We’ll also clean up some of the alternate button styles by way of the btn-alt class rule set. 
+Specifically, let’s make the buttons’ borders white and add hover styles including a white 
+background and blue text color.
+
+With all of the additions, our new btn-alt class rule set should look like this:
+*/
+.btn-alt {
+  border: 1px solid #fff;
+  padding: 10px 30px;
+}
+.btn-alt:hover {
+  background: #fff;
+  color: #648880;
+}
+/*
+(5) Now that we have all of the areas with blue backgrounds cleaned up, let’s add styles 
+for the rows that have white backgrounds. Let’s create a new section within our main.css 
+file for rows, just below the clearfix section. Within this new rows section, let’s create 
+a new class selector named row.
+
+Within our new row class rule set, let’s add a white background, a minimum width of 960 
+pixels (to make sure our row elements are always larger than the width of our container 
+or grid elements), and some vertical padding. Altogether our new row section within our 
+main.css file should look like this:
+*/
+
+/*
+  ========================================
+  Rows
+  ========================================
+*/
+
+.row {
+  background: #fff;
+  min-width: 960px;
+  padding: 66px 0 44px 0;
+}
+/*
+(6) With our row class styles in place, let’s add a row with a white background to our home 
+page. We’ll do this on our teasers section. Currently this area has a <section> element with 
+the class of grid wrapping three additional <section> elements with the classes of teaser and 
+col-1-3.
+
+To add a white background to this section, we’re going to wrap all of these elements in an 
+element with the class of row.
+
+Because we’ll want the entire teasers section wrapped in a <section> element, we’re going to
+add a new <section> element with the class of row that surrounds the existing <section> 
+element with the class of grid.
+
+Having two <section> elements wrapping the exact same content diminishes semantic value. To 
+correct this we’ll change the second <section> element, the one with the class of grid, to a 
+<div> element. After all, at this point this element is only adding styles, not semantic 
+meaning, and is appropriate as a <div> element.
+
+The structure of our new teasers element should look like this:
+
+<section class="row">
+  <div class="grid">
+
+    <!-- Speakers -->
+    
+    <section class="teaser col-1-3">
+      ...
+    </section><!--
+    
+    Schedule
+  
+    --><section class="teaser col-1-3">
+      ...
+    </section><!--
+    
+    Venue
+    
+    --><section class="teaser col-1-3">
+      ...
+    </section>
+
+  </div>
+</section>
+
+*/
+/*---------------------------------Designing Gradient Backgrounds-------------------------------*/
+
+/*
+(1) We’ll create a new row with a gradient background by using the class of row-alt. 
+Because the new row will share the same min-width property and value as the row class 
+selector, we’ll combine these two selectors.
+*/
+.row,
+.row-alt {
+  min-width: 960px;
+}
+/*
+(2) Next we’ll want to create new rule sets to apply styles specifically to the row-alt class 
+selector. These new styles will include a gradient background that starts with green and 
+transitions to yellow, from left to right.
+
+Using the linear-gradient() function with the appropriate values and vendor prefixes, 
+we’ll add the gradient background to the row-alt class rule set. We’ll also include a 
+single background color before the gradient background as a fallback, just in case a browser
+ doesn’t support gradient backgrounds.
+
+Lastly, we’ll also add in some vertical padding. Our updated row section now looks like 
+this:
+*/
+.row,
+.row-alt{
+  min-width: 960px;
+}
+.row {
+  background: #fff;
+  padding: 66px 0 44px 0;
+}
+.row-alt {
+   background: #cbe2c1;
+   background: -webkit-linear-gradient(to right, #a1d3b0, #f6f1d3);
+   background: -moz-linear-gradient(to right, #a1d3b0, #f6f1d3);
+   background: linear-gradient(to right, #a1d3b0, #f6f1d3);
+   padding: 44px 0 22px 0;
+ }
+ /*
+(2) With our row-alt styles in place, let’s put them to use on all of our interior pages. 
+Currently, all of our interior pages have a <section> element with a class of container. 
+Then, inside each <section> element is an <h1> element containing the heading of the page.
+
+We’re going to alter these <section> elements much like we did the teaser <section> element 
+on our home page. We’ll wrap each <section> element with a class of container in a <section> 
+element with the class of row-alt. We’ll then change each <section> element with a class of 
+container to a <div> element for better semantic alignment.
+
+Each of our interior pages should now include the following:
+
+<section class="row-alt">
+  <div class="container">
+
+    <h1>...</h1>
+
+  </div>
+</section>
+
+ */
+ /*
+(3) Because we are updating our interior pages, let’s make their introductions, or leads, 
+a little more appealing. We’ll begin by adding a paragraph introducing each page just below 
+the <h1> element in each <section> element with a class of row-alt. Our speakers.html page, 
+for example, may now include the following lead section:
+
+<section class="row-alt">
+  <div class="container">
+
+    <h1>Speakers</h1>
+
+    <p>We&#8217;re happy to welcome over twenty speakers to present on the industry&#8217;s latest technologies. Prepare for an inspiration extravaganza.</p>
+  
+  </div>
+</section>
+
+(4) In addition to inserting the paragraph, let’s also change some of the styles within the 
+lead section. To do this, we’ll add a class of lead to the <div> element that already has a 
+class of container; this can be found nested directly inside the <section> element with a 
+class of row-alt. Our lead section for each interior page will now look like this:
+
+<section class="row-alt">
+  <div class="lead container">
+    
+    ...
+
+  </div>
+</section>
+
+Once the lead class is in place, we’ll center all of the text within these <div> elements. 
+We’ll also increase the font-size and line-height of any paragraphs within these <div> 
+elements.
+
+We’ll create a new section for leads within our main.css file, just below the typography 
+section, and add the following styles:
+ */
+ /*
+  ========================================
+  Leads
+  ========================================
+*/
+
+.lead {
+  text-align: center;
+}
+.lead p {
+  font-size: 21px;
+  line-height: 33px;
+}
+
+/*-------------------------Using Multiple Background Images-------------------------------*/
+
